@@ -19,7 +19,7 @@ swap inventories tomorrow and crafting keeps working.
 `clads_crafting` ships four bench archetypes (workbench, chemistry table,
 gunsmith bench, kitchen), a starter pack of nine recipes spanning tools,
 medicine, food, drinks, and ammo, a placement / pickup loop that owns benches
-to the placing player, and a category-driven React/Vite NUI with a 3D
+to the placing player, and a category-driven React NUI with a 3D
 preview pane.
 
 **Who it's for**
@@ -51,7 +51,7 @@ preview pane.
   inventory space, and job allowlist are all re-checked even if the NUI
   payload is tampered with.
 - Theme block that pushes every accent color into the NUI's CSS variables
-  at runtime — no Vite rebuild required.
+  at runtime — no rebuild required.
 - JSON locales (en/tr/de/fr/es) with `clads_locale` → `ox:locale` →
   `qb_locale` → `lang` resolution and per-bench/recipe label overrides.
 - Three exports (`OpenCrafting`, `CloseCrafting`, `IsUIOpen`) plus
@@ -209,7 +209,7 @@ usable (`client/main.lua:338-346`).
 Defined in `config.lua:49-65`. Every value is a 6-digit hex color with a
 leading `#`. The web bundle reads `Config.UI` on menu open and injects the
 values into `:root` CSS variables — restyles take effect on resource restart,
-no Vite rebuild required.
+no rebuild required.
 
 ```lua
 Config.UI = {
@@ -410,7 +410,7 @@ testing UI changes without standing next to a bench.
 Edit `Config.UI` in `config.lua:49-65`. Values are pushed into the NUI's
 `:root` CSS variables on menu open via `buildUiTheme()` in
 `client/utils.lua:71-73`, so changing a colour just needs a resource restart
-— no Vite rebuild. To match the placement-mode outline to your primary, also
+— no rebuild required. To match the placement-mode outline to your primary, also
 update `Config.PlacementOutline` (`config.lua:72`).
 
 ### Locales

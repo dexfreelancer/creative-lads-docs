@@ -17,7 +17,7 @@ but no money changes hands.
 
 `clads_boxing` is a lightweight activities resource. It does not try to be a
 full fight-club ecosystem; it ships two arenas (Tequila La-La and Vespucci
-Beach), a marker-based interaction, a React/Vite NUI lobby, glove props that
+Beach), a marker-based interaction, a React NUI lobby, glove props that
 attach to the player's hands, configurable damage multipliers, and a parimutuel
 betting pool that splits the losing side's pot among the winning side
 proportionally.
@@ -167,7 +167,7 @@ Reserved hook — currently only used as a future toggle for verbose logs.
 
 Defined in `config.lua:46-62`. Every value is a 6-digit hex colour with a
 leading `#`. The web bundle injects the values into `:root` at runtime, so
-restyles take effect on resource restart — no Vite rebuild required.
+restyles take effect on resource restart — no rebuild required.
 
 ```lua
 Config.UI = {
@@ -357,7 +357,7 @@ through the marker prompt and NUI menu.
 Edit `Config.UI` in `config.lua:46-62`. Values are pushed into the NUI's
 `:root` CSS variables on menu open via `pushTheme()` in
 `client/main.lua:59-61`, so changing a colour just needs a resource restart —
-no Vite rebuild. To match the marker tint to your primary, also update
+no rebuild required. To match the marker tint to your primary, also update
 `Config.Marker.color` (`config.lua:118`).
 
 ### Locales

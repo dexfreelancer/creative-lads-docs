@@ -69,9 +69,7 @@ The resource ships SQL migrations under `sql/install.sql`. They are also re-appl
 
 4. **Open `config.lua`** and adjust the framework, theme, photo provider, mechanic integration, and garage list to match your server. Every value is documented inline.
 
-5. **(Optional) Replace the bundled web build** by editing `web/src/` and running `npm run build` from the `web/` folder. The compiled output lives in `web/build/` and is referenced by `fxmanifest.lua`.
-
-6. **Restart your server** (or `start clads_garages` if you've ensured deps are already running). On the first start the bridge prints the detected framework slug, e.g. `[clads_garages] bridge ready (framework: qbx)`.
+5. **Restart your server** (or `start clads_garages` if you've ensured deps are already running). On the first start the bridge prints the detected framework slug, e.g. `[clads_garages] bridge ready (framework: qbx)`.
 
 ---
 

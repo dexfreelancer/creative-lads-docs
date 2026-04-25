@@ -29,7 +29,7 @@ Creative Lads character selection and multicharacter system for FiveM. Built on 
 - **Clothing abstraction** through `community_bridge:Bridge().Clothing` — supports qb-clothing, illenium-appearance, fivem-appearance, esx_skin, and rcore_clothing out of the box, with a configurable fallback export.
 - **Localized UI** — English, Turkish, German, and French locales bundled in `locales/`.
 - **HUD hide hook** — fires a configurable event so your HUD resource can hide itself during selection.
-- **Glassmorphic React UI** (Vite + Framer Motion + Zustand) located in `web/src/`, served from `web/dist/`.
+- **Glassmorphic React UI** with subtle motion, served from `web/dist/`.
 
 ---
 
@@ -399,17 +399,9 @@ The design system lives in `web/src/index.css` under `:root`. The shipped palett
 }
 ```
 
-To rebrand:
+The variables above are the canonical reference for which CSS custom properties drive each surface. The shipped UI bundle is locked under FiveM escrow — if you need a custom palette, open a support ticket and we'll cut a re-themed build for you. Future releases will move this resource onto the same runtime-theme override used by the newer `clads_*` resources.
 
-1. Edit the variables in `web/src/index.css`.
-2. Rebuild the UI from `web/`:
-   ```bash
-   npm install
-   npm run build
-   ```
-3. The output goes into `web/dist/` which is the path declared in `fxmanifest.lua` under `ui_page`.
-
-If you only need to swap the accent color, you typically only need to update `--color-primary`, `--color-primary-hover`, `--color-primary-dim`, `--color-primary-glow`, `--color-action`, `--color-action-hover`, `--color-action-dim`, and `--color-danger`.
+The accent group most servers want to swap is `--color-primary`, `--color-primary-hover`, `--color-primary-dim`, `--color-primary-glow`, `--color-action`, `--color-action-hover`, `--color-action-dim`, and `--color-danger`.
 
 ### Changing the logo
 
