@@ -19,3 +19,7 @@
 
 * [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>)
 * [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>)
+
+## Activities
+
+* [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>)

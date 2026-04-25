@@ -15,6 +15,7 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 | [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>) | Modular DJ console with placeable decks and speakers |
 | [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>) | Parametric crosshair overlay with in-game editor |
 | [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>) | Cinematic freecam with anti-exploit wall detection |
+| [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>) | 1v1 boxing arena with rounds, gloves, HUD timer, and parimutuel betting |
 
 ## Common Stack
 
