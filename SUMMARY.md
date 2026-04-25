@@ -15,6 +15,10 @@
 * [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>)
 * [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>)
 
+## Property
+
+* [🏨 Creative Lads Motels](<🏨 Creative Lads Motels.md>)
+
 ## Communication
 
 * [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>)

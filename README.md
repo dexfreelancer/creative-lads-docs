@@ -10,6 +10,7 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 | [🅿️ Creative Lads Garages](<🅿️ Creative Lads Garages.md>) | 47-garage system with public, faction, gang, depot, and business types |
 | [🏬 Creative Lads Vehicleshop](<🏬 Creative Lads Vehicleshop.md>) | Multi-shop dealership — cars, bikes, aircraft, boats, photo capture |
 | [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>) | Vehicle rentals for new players, multi-location |
+| [🏨 Creative Lads Motels](<🏨 Creative Lads Motels.md>) | Motel rentals + ownership — TP shells, MLO mode, doorbell access, police breach |
 | [👥 Creative Lads Multichar](<👥 Creative Lads Multichar.md>) | Character selection screen with multi-slot support |
 | [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>) | Production radio with jammer + GPS modules |
 | [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>) | Modular DJ console with placeable decks and speakers |
