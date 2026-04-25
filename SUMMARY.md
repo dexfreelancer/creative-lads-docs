@@ -4,18 +4,18 @@
 
 ## Vehicles
 
-* [clads_mechanic](clads_mechanic.md)
-* [clads_garages](clads_garages.md)
-* [clads_vehicleshop](clads_vehicleshop.md)
-* [clads_rentals](clads_rentals.md)
+* [🔧 Creative Lads Mechanic](<🔧 Creative Lads Mechanic.md>)
+* [🅿️ Creative Lads Garages](<🅿️ Creative Lads Garages.md>)
+* [🏬 Creative Lads Vehicleshop](<🏬 Creative Lads Vehicleshop.md>)
+* [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>)
 
 ## Player
 
-* [clads_multichar](clads_multichar.md)
-* [clads_freecam](clads_freecam.md)
-* [clads_crosshair](clads_crosshair.md)
+* [👥 Creative Lads Multichar](<👥 Creative Lads Multichar.md>)
+* [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>)
+* [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>)
 
 ## Communication
 
-* [clads_radio](clads_radio.md)
-* [clads_dj](clads_dj.md)
+* [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>)
+* [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>)

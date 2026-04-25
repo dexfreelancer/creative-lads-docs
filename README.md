@@ -6,15 +6,15 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 
 | Resource | Purpose |
 | --- | --- |
-| [clads_mechanic](clads_mechanic.md) | Mechanic tablet — vehicle servicing, tuning, nitrous, stance, speed limiter |
-| [clads_garages](clads_garages.md) | 47-garage system with public, faction, gang, depot, and business types |
-| [clads_vehicleshop](clads_vehicleshop.md) | Multi-shop dealership — cars, bikes, aircraft, boats, photo capture |
-| [clads_rentals](clads_rentals.md) | Vehicle rentals for new players, multi-location |
-| [clads_multichar](clads_multichar.md) | Character selection screen with multi-slot support |
-| [clads_radio](clads_radio.md) | Production radio with jammer + GPS modules |
-| [clads_dj](clads_dj.md) | Modular DJ console with placeable decks and speakers |
-| [clads_crosshair](clads_crosshair.md) | Parametric crosshair overlay with in-game editor |
-| [clads_freecam](clads_freecam.md) | Cinematic freecam with anti-exploit wall detection |
+| [🔧 Creative Lads Mechanic](<🔧 Creative Lads Mechanic.md>) | Mechanic tablet — vehicle servicing, tuning, nitrous, stance, speed limiter |
+| [🅿️ Creative Lads Garages](<🅿️ Creative Lads Garages.md>) | 47-garage system with public, faction, gang, depot, and business types |
+| [🏬 Creative Lads Vehicleshop](<🏬 Creative Lads Vehicleshop.md>) | Multi-shop dealership — cars, bikes, aircraft, boats, photo capture |
+| [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>) | Vehicle rentals for new players, multi-location |
+| [👥 Creative Lads Multichar](<👥 Creative Lads Multichar.md>) | Character selection screen with multi-slot support |
+| [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>) | Production radio with jammer + GPS modules |
+| [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>) | Modular DJ console with placeable decks and speakers |
+| [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>) | Parametric crosshair overlay with in-game editor |
+| [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>) | Cinematic freecam with anti-exploit wall detection |
 
 ## Common Stack
 
