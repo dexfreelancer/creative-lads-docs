@@ -23,3 +23,4 @@
 ## Activities
 
 * [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>)
+* [🔨 Creative Lads Crafting](<🔨 Creative Lads Crafting.md>)

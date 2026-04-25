@@ -16,6 +16,7 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 | [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>) | Parametric crosshair overlay with in-game editor |
 | [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>) | Cinematic freecam with anti-exploit wall detection |
 | [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>) | 1v1 boxing arena with rounds, gloves, HUD timer, and parimutuel betting |
+| [🔨 Creative Lads Crafting](<🔨 Creative Lads Crafting.md>) | Full-screen crafting with placeable benches, recipe queue, profession XP, and 3D preview |
 
 ## Common Stack
 
