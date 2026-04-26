@@ -15,6 +15,7 @@
 * [📍 Creative Lads Spawn](<📍 Creative Lads Spawn.md>)
 * [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>)
 * [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>)
+* [📛 Creative Lads Nameplate](<📛 Creative Lads Nameplate.md>)
 
 ## Property
 
