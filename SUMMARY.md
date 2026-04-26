@@ -12,6 +12,7 @@
 ## Player
 
 * [👥 Creative Lads Multichar](<👥 Creative Lads Multichar.md>)
+* [📍 Creative Lads Spawn](<📍 Creative Lads Spawn.md>)
 * [📸 Creative Lads Freecam](<📸 Creative Lads Freecam.md>)
 * [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>)
 

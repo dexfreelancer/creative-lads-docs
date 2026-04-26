@@ -12,6 +12,7 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 | [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>) | Vehicle rentals for new players, multi-location |
 | [🏨 Creative Lads Motels](<🏨 Creative Lads Motels.md>) | Motel rentals + ownership — TP shells, MLO mode, doorbell access, police breach |
 | [👥 Creative Lads Multichar](<👥 Creative Lads Multichar.md>) | Character selection screen with multi-slot support |
+| [📍 Creative Lads Spawn](<📍 Creative Lads Spawn.md>) | Cinematic spawn selector with bird's-eye camera, population tiers, and last-location resume |
 | [📻 Creative Lads Radio](<📻 Creative Lads Radio.md>) | Production radio with jammer + GPS modules |
 | [🎧 Creative Lads DJ](<🎧 Creative Lads DJ.md>) | Modular DJ console with placeable decks and speakers |
 | [🎯 Creative Lads Crosshair](<🎯 Creative Lads Crosshair.md>) | Parametric crosshair overlay with in-game editor |
