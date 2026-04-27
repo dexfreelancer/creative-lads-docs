@@ -135,6 +135,31 @@ Config.Societies = {
 
 When `autoCreate = true`, the first time a member of a listed job opens the bank, the resource creates `society_<job>` with the framework-supplied job label and an IBAN of `<prefix>..<JOB_NAME_UPPER>`.
 
+### Interaction mode
+
+```lua
+Config.Interaction = {
+    mode = 'target',  -- 'target' | 'zone'
+
+    zone = {
+        key       = 38,                     -- E
+        keyLabel  = 'E',
+        helpText  = true,
+        marker    = true,
+        markerType = 1,
+        markerSize  = vector3(1.5, 1.5, 0.5),
+        markerColor = { r = 255, g = 0, b = 60, a = 100 },
+        atmDrawDistance  = 8.0,
+        bankDrawDistance = 12.0,
+    },
+}
+```
+
+- `'target'` — uses the server's target system (ox_target / qb-target / sleepless_interact, auto-picked through community_bridge). Recommended on any modern stack.
+- `'zone'` — no target system needed. The player walks inside the configured radius of a bank pin or one of `Config.ATMs.models`, sees the marker + help-text prompt, and presses the configured key (`E` by default). Pick this for lightweight or standalone setups.
+
+`zone.marker` and `zone.helpText` can be toggled independently — set both to `false` for a fully invisible "press E inside the radius" interaction.
+
 ### Bank locations and ATMs
 
 ```lua
