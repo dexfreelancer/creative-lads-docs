@@ -100,8 +100,10 @@ auto-detection misfires on your stack.
 
 - `qbx_core` + `qbx_vehicles` — required by the persistent job-vehicle (tow
   truck) feature in `server/sv-joyvehicle.lua`.
-- `betterv_vehicleshop` — used to read the real vehicle price for percentage
-  pricing (`server/sv-mods.lua` and `framework/cl-functions.lua`).
+- A vehicle-shop resource that exposes a "vehicle price" lookup — used
+  for percentage-based mod pricing (`server/sv-mods.lua` and
+  `framework/cl-functions.lua`). Wire your shop into the buyer-editable
+  bridge file at `bridge/server/vehicleshop.lua`.
 - `brazzers-fakeplates` — original-plate lookups so persisted vehicle data
   matches the real plate (`framework/sv-functions.lua:34-52`).
 
@@ -188,9 +190,9 @@ the source of truth and the fallback for missing keys.
 
 ### 4.2 UI Theme
 
-Defined in `config.lua:67-226`. The theme block exposes every CSS custom
-property the tablet UI uses, so colour tweaks apply at runtime without
-rebuilding the React bundle.
+Defined in `config.lua:67-226`. The theme block exposes every colour the
+tablet UI uses, so a tweak in `config.lua` and a resource restart is all
+it takes to repaint the panel.
 
 ```lua
 Config.Theme = {
@@ -793,8 +795,8 @@ Useful targets when extending the resource (all under the
   item. Either give them one, set `Config.RequireTabletItem = false`, or set
   `requireTabletItem = false` on that specific location entry.
 - **NUI never appears:** make sure `community_bridge`, `ox_lib`, and `oxmysql`
-  start before `clads_mechanic`. Check the F8 console for errors loading
-  `web/dist/index.html`.
+  start before `clads_mechanic`. If the panel still does not load, re-download
+  the resource from your Tebex account and replace the folder.
 
 ### Target options missing
 

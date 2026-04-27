@@ -43,14 +43,14 @@ you tell it to draw above every player at render distance.
 - Four cosmetic categories — **flair**, **frame**, **name colour**,
   **name effect** — with rarity tints, owned/locked states, and live
   in-menu nameplate preview.
-- React + Vite + obfuscator NUI bundle on the Creative Lads "Purple Haze
-  + Liquid Glass" design system.
+- Modern in-game UI on the Creative Lads "Purple Haze + Liquid Glass"
+  design system.
 - 12 public exports for buyer-side integration: `SetPlayerLevel`,
   `SetWantedStars`, `SetBadge`, `SetPlayerTitle`, `SetCustomTitle`,
   `SetPoliceMode`, `GrantCosmetic`, `RevokeCosmetic`, `EquipCosmetic`,
   `UnequipCosmetic`, `GetEquippedCosmetics`, `BuildRenderData`.
 - Per-element display modes (`dynamic` / `static` / `hidden`) so admins
-  can pin or remove any single field without rebuilding.
+  can pin or remove any single field from `config.lua`.
 - Static badge supports image filenames — drop `web/build/logo.png` and
   the entire population renders your server logo as the left ornament.
 - JSON locales (en/tr/de/fr/es) with the standard `clads_locale` →
@@ -368,8 +368,8 @@ Config.UI = {
 }
 ```
 
-These values are forwarded to the cosmetic menu's CSS variables on open.
-Change them without rebuilding the bundle.
+Edit the values, restart the resource, and the new theme takes effect on
+the next menu open.
 
 ---
 
@@ -389,11 +389,11 @@ entirely.
 
 ### Theme
 
-Edit `Config.UI` in `config.lua`. Values are pushed to the bundle via
-`SendNUIMessage` on menu open, so changes only need a resource restart —
-no rebuild required. The DUI nameplate stylesheet is fixed at build time;
-to retheme the in-world plate, edit `web/src/nameplate/style.css` and
-rebuild.
+Edit `Config.UI` in `config.lua` and restart the resource — the new
+theme takes effect on the next menu open. The cosmetic menu colors,
+plate accents, and rarity tints are all driven from this block. The
+in-world nameplate's static styling is fixed; everything that's
+buyer-tweakable is exposed through `Config.UI` and `Config.Display`.
 
 ### Locales
 
@@ -446,13 +446,6 @@ Config.Cosmetics.flair[#Config.Cosmetics.flair + 1] = {
 
 Add a matching `flair_rocket` key to every locale file and you're done —
 the menu picks it up on the next open.
-
-### Asset paths
-
-The `web/build/` folder is the only thing the buyer ZIP ships from
-`web/`. `web/src/`, `web/package.json`, `web/vite.config.ts`,
-`web/tsconfig.json` and `web/node_modules/` are all excluded from the
-Tebex package. Buyers do **not** run `npm install`.
 
 ---
 
@@ -563,9 +556,9 @@ Internal — listed for completeness; you don't normally call these directly.
 - The DUI URL is `nui://clads_nameplate/...`. Relative paths in
   `Config.Display.badge.static` are resolved against the resource root,
   so `'web/build/logo.png'` works; a leading slash is also supported.
-- Check the in-world DUI: open browser DevTools while the resource
-  is running with `CLADS_RAW=1` set during the build, and inspect the
-  `<img id="badge-img">` element.
+- Confirm the file exists at the configured path. If you placed it
+  somewhere outside the resource root, use a full URL instead of a
+  relative path.
 
 ### Police-mode tint not appearing
 

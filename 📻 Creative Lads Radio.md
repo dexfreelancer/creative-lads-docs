@@ -354,42 +354,9 @@ Suggested `ox_inventory` entry:
 
 ## 7. Customization
 
-### 7.1 UI Theme — dark_red palette
+### 7.1 UI Theme
 
-The LCD now ships with the **dark_red** palette. The CSS variable name kept its historical `--lcd-green` identifier for backwards compatibility, but its value is the dark-red accent (`#FF003C`).
-
-```css
-/* web/src/index.css */
-:root {
-  --lcd-green:      #FF003C;                    /* primary accent — dark red */
-  --lcd-green-dim:  rgba(255, 0, 60, 0.06);
-  --lcd-green-glow: rgba(255, 0, 60, 0.4);
-  --lcd-amber:      #F59E0B;
-  --lcd-amber-dim:  rgba(245, 158, 11, 0.06);
-  --lcd-amber-glow: rgba(245, 158, 11, 0.35);
-  --lcd-red:        #FF003C;                    /* alarm / disconnect */
-  --lcd-red-glow:   rgba(255, 0, 60, 0.4);
-}
-```
-
-Surface tokens used by the LCD panel itself:
-
-```css
-/* web/src/components/Radio/index.css */
-.radio-screen {
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(255, 0, 60, 0.015) 0%, transparent 60%),
-    linear-gradient(180deg, #0D0D0D 0%, #1A1A1A 50%, #0D0D0D 100%);
-}
-```
-
-To re-skin the radio:
-
-1. Edit the four `--lcd-*` accent variables in `web/src/index.css`.
-2. Edit the surface gradient (`#0D0D0D` → `#1A1A1A`) in `web/src/components/Radio/index.css`.
-3. Rebuild the web bundle (`web/build/**` is what the resource serves).
-
-The draggable channel HUD and the scanline overlay both consume the same tokens, so a single palette change propagates everywhere.
+The radio ships with the **dark_red** palette — primary accent `#FF003C` on a black/dark-grey LCD surface. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build.
 
 ### 7.2 Adding restricted channels
 

@@ -23,13 +23,13 @@ Creative Lads character selection and multicharacter system for FiveM. Built on 
   - Weather override (Sunny, Rain, Foggy, Snow, Christmas, etc.)
   - Time override (06:00 through 03:00 buckets)
   - Background location picker (Random / City / Vinewood)
-- **Settings persist per client** via FiveM KVP (`clads_multichar_settings`).
+- **Settings persist per client** — saved on the player's local FiveM install.
 - **Intro cutscene** (`MP_INTRO_CONCAT`) plays automatically on first character creation.
 - **Loadscreen integration** — sends `customEvent: showContinue` to the configured loadscreen and waits for `loadscreen:continueClicked` (with a configurable timeout).
 - **Clothing abstraction** through `community_bridge:Bridge().Clothing` — supports qb-clothing, illenium-appearance, fivem-appearance, esx_skin, and rcore_clothing out of the box, with a configurable fallback export.
 - **Localized UI** — English, Turkish, German, and French locales bundled in `locales/`.
 - **HUD hide hook** — fires a configurable event so your HUD resource can hide itself during selection.
-- **Glassmorphic React UI** with subtle motion, served from `web/dist/`.
+- **Glassmorphic in-game UI** with subtle motion.
 
 ---
 
@@ -145,7 +145,7 @@ Config.UI = {
 
 | Key | Meaning |
 |---|---|
-| `LogoSrc` | URL or path (relative to `web/dist/`) of the logo. The default is `./logo.png` shipped at `web/dist/logo.png`. |
+| `LogoSrc` | URL or filename of the logo. Defaults to the shipped `./logo.png` — drop a replacement at the same path or point this at any HTTPS URL. |
 | `FontUrl` | A Google Fonts (or any CSS) stylesheet URL. The React app injects a `<link>` tag at runtime. |
 | `FontPrimary` | CSS `font-family` string for body text — written to `--font-primary`. |
 | `FontDisplay` | CSS `font-family` for headings/labels — written to `--font-display`. |
@@ -164,7 +164,7 @@ Config.DefaultSpawn = { x = -1037.73, y = -2737.88, z = 20.17, w = 330.0 }
 
 ### Default settings
 
-These seed the settings panel for new clients. Once the player toggles anything, their values are persisted via `SetResourceKvp('clads_multichar_settings', ...)` and override the defaults on next login.
+These seed the settings panel for new clients. Once the player toggles anything, their values are saved on their client and override the defaults on next login.
 
 ```lua
 Config.DefaultSettings = {
@@ -242,7 +242,7 @@ Config.MaxHeight        = 200      -- cm
 Config.DefaultBirthdate = '1990-01-15'
 ```
 
-The React creator menu (`web/src/components/LeftPanel/CreatorMenu.tsx`) uses these for client-side input validation and slider ranges.
+The character creator UI uses these for client-side input validation and slider ranges.
 
 ### HUD control
 
@@ -372,42 +372,13 @@ There are no other in-game commands shipped by this resource.
 
 ### UI theme (Dark Red palette)
 
-The design system lives in `web/src/index.css` under `:root`. The shipped palette is:
-
-```css
-:root {
-  /* Core Background */
-  --bg-core:        #0D0D0D;
-  --bg-surface:     #1A1A1A;
-  --bg-elevated:    #2E2E2E;
-  --bg-glass:       rgba(26, 26, 26, 0.85);
-  --bg-glass-hover: rgba(26, 26, 26, 0.95);
-
-  /* Primary / Action — Dark Red */
-  --color-primary:        #FF003C;
-  --color-primary-hover:  #FF3D63;
-  --color-primary-dim:    rgba(255, 0, 60, 0.3);
-  --color-primary-glow:   rgba(255, 0, 60, 0.5);
-  --color-action:         #FF003C;
-  --color-action-hover:   #CC0030;
-  --color-action-dim:     rgba(255, 0, 60, 0.2);
-
-  /* Semantic */
-  --color-success: #22C55E;
-  --color-danger:  #FF003C;
-  --color-warning: #F59E0B;
-}
-```
-
-The variables above are the canonical reference for which CSS custom properties drive each surface. The shipped UI bundle is locked under FiveM escrow — if you need a custom palette, open a support ticket and we'll cut a re-themed build for you. Future releases will move this resource onto the same runtime-theme override used by the newer `clads_*` resources.
-
-The accent group most servers want to swap is `--color-primary`, `--color-primary-hover`, `--color-primary-dim`, `--color-primary-glow`, `--color-action`, `--color-action-hover`, `--color-action-dim`, and `--color-danger`.
+The character selector ships with the **Dark Red** palette — primary `#FF003C` on a black/dark-grey surface. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build. Future releases will move this resource onto the same runtime-theme override used by the newer `clads_*` resources.
 
 ### Changing the logo
 
-- Replace `web/dist/logo.png` (recommended size: square, transparent PNG).
-- Or set `Config.UI.LogoSrc` to a remote URL — it is passed straight to the React `<img src>`.
-- The logo also appears on the splash overlay (`#splash-logo` in `index.css`) and the creator menu.
+- Replace the shipped `logo.png` with your own (recommended size: square, transparent PNG, same filename).
+- Or set `Config.UI.LogoSrc` to a remote URL — it is rendered directly in the UI.
+- The logo also appears on the splash overlay and the creator menu.
 
 ### Adding a background location
 
@@ -593,13 +564,13 @@ The detection order in `bridge/init.lua` is `qbx_core` → `qb-core` → `es_ext
 
 ### Settings reset every time
 
-Settings are stored in `SetResourceKvp('clads_multichar_settings', ...)`. KVP is per-game-account on the local client. If the player wipes their FiveM data the settings reset. There is no server-side persistence for settings by design.
+Settings are saved on the player's client. If the player wipes their FiveM data (or moves to another machine) the settings reset. There is no server-side persistence for settings by design.
 
 ### Character selection UI never appears
 
-- Confirm `web/dist/index.html` and `web/dist/assets/*` are present.
+- The UI assets did not load — re-download the resource from your Tebex account and replace the folder. The bundle ships pre-built.
 - Check the client console (F8) for missing locale errors. The loader requires at least `locales/en.json`.
-- The client retries the `showCharacters` NUI message every 500 ms for up to 30 s until the React app sends back the `showCharactersAck` callback. If you do not see "showCharactersAck" being received, the NUI page is failing to load — usually a CSP or asset path issue.
+- If the issue persists after a clean re-download, open a ticket.
 
 ---
 

@@ -50,7 +50,7 @@ No SQL, no targets, no inventories. The resource declares both dependencies in `
 5. Open `config.lua` and tune the values described in section 4.
 6. Start (or restart) the server and run `/handling` from the driver seat.
 
-There is no database table, no SQL migration, and no NUI build step on the buyer side — the resource ships with the obfuscated bundle pre-built in `web/build/`.
+There is no database table, no SQL migration, and no install command — drop the folder and `ensure` it.
 
 ---
 
@@ -227,13 +227,12 @@ Each group's presets pair with translation keys (`preset_<group>_<id>`). Picking
 
 ```lua
 Config.MeddlingResources = {
-    'betterac',
     'qbx_cruise',
     'vehiclehandler',
 }
 ```
 
-A handful of community resources re-write `CHandlingData` after this editor sets it. On startup the server prints a one-shot warning for every name that's currently `started` or `starting`, so you know where to look if values keep flipping back during testing. Add or remove names to match your stack.
+A handful of community resources re-write `CHandlingData` after this editor sets it. On startup the server prints a one-shot warning for every name that's currently `started` or `starting`, so you know where to look if values keep flipping back during testing. Add or remove names to match your stack — anti-cheats and any custom speed-limiter scripts are common offenders.
 
 ---
 
@@ -377,7 +376,7 @@ Profiles are pushed to every connected client via `clads_handlingeditor:client:p
 
 ### Editor opens but sliders are blank
 
-The NUI never received the field array. Open the F8 console and look for fetch errors against `https://cfx-nui-clads_handlingeditor/...`. Most often this means the `web/build/` folder is missing or the resource was forked without rebuilding it. Run `cd web && npm install && npm run build` from the resource root and restart.
+The UI assets did not load. Re-download the resource from your Tebex account and replace the folder — the bundle ships pre-built. If the issue persists, open a ticket.
 
 ### Permission ace passes but the toast still says "no permission"
 

@@ -16,7 +16,7 @@ Highlights:
 - **USB plug-and-play** — when the player is carrying `Config.UsbItem` (default `music_usb`), the NUI exposes a USB shortcut on the composer. Inventory presence is checked through `community_bridge.Inventory`, so it works against any supported inventory backend without extra wiring.
 - **Microphone broadcast** — a megaphone-style proximity boost combined with an audio submix (radio FX) attached to the broadcaster's right hand bone. When `pma-voice` is started the proximity range is overridden for the duration of the broadcast; without it the prop attachment + mumble submix still apply.
 - **DJ idle animation** — a looping idle clip (`anim@amb@nightclub@djs@solomun@ / sol_idle_01` by default) plays whenever the panel is open, and is cleared on close or resource stop.
-- **Persistent across restart** — every placed prop is written to `clads_dj_props` (auto-created on first boot). On startup the server respawns each prop, restores state, and resyncs to clients. A migration shim copies rows from a legacy `betterv_dj_props` table on first run if it exists.
+- **Persistent across restart** — every placed prop is written to `clads_dj_props` (auto-created on first boot). On startup the server respawns each prop, restores state, and resyncs to clients.
 - **Framework-agnostic** — `community_bridge` handles framework, inventory, target, and notify abstraction. The `fxmanifest.lua` declares no hard framework dependency.
 - **Themable NUI** — every visible color, gradient, border, and font on the console is wired to a `Config.Theme` token that pipes straight into a CSS variable at panel open time, so buyers can repaint without unpacking the bundle.
 
@@ -60,7 +60,7 @@ Highlights:
    add_principal identifier.fivem:1234567 group.admin
    ```
 
-6. **Start the server.** On first boot the resource creates the `clads_dj_props` table automatically. If a legacy `betterv_dj_props` table exists and the new table is empty, rows are migrated automatically.
+6. **Start the server.** On first boot the resource creates the `clads_dj_props` table automatically — no SQL file to run.
 7. **Confirm `xsound` is started** — without it audio playback is disabled and a debug log warning is printed when `Config.Debug = true`.
 
 ---

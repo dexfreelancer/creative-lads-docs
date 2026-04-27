@@ -493,10 +493,10 @@ preview, so leave that alone.
 
 ### Asset paths
 
-The web bundle lives in `web/dist/`. The logo at `web/dist/logo.png` is one
-of four files in `escrow_ignore` (`fxmanifest.lua:57-62`), so you can swap
-it for your own logo without touching the encrypted JS. The other escrow-
-ignored files are `config.lua`, `locales/**.json`, and `sql/install.sql`.
+The bundled logo is one of four files in `escrow_ignore`
+(`fxmanifest.lua:57-62`), so you can swap it for your own without
+touching anything else. The other escrow-ignored files are `config.lua`,
+`locales/**.json`, and `sql/install.sql`.
 
 ---
 

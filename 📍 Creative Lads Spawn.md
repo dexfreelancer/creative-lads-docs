@@ -16,7 +16,7 @@ Core features:
 - **Live population tiers.** A server thread samples player positions every 3 minutes and reports a tier (`sakin` / `normal` / `yogun`) per spawn point based on the percentage of online players within `400m` of that point. The NUI shows the tier as a coloured dot + percentage.
 - **"Last Location" resume.** When a player disconnects, their position is cached for 20 minutes by default. On reconnect, a synthetic "Last Location" entry appears at the top of the selector so they can pick up exactly where they left off. Persists in memory by default; switch to `oxmysql` for restart-durable storage.
 - **Five language locales out of the box.** English, Turkish, German, French, and Spanish ship in `locales/`. Locale auto-detection runs through the `clads_locale` → `ox:locale` → `qb_locale` → `lang` convar chain.
-- **Modern NUI.** A 1700+ line custom UI built on Inter and Oswald, with screen-projected markers, callout SVG paths, a hud card, hero intro, and a horizontal location strip with population dots. Obfuscated for shipping; CLADS_RAW=1 toggles raw output for local debugging.
+- **Modern in-game UI.** A custom selector built on Inter and Oswald, with screen-projected markers, callout SVG paths, a HUD card, a hero intro, and a horizontal location strip with population dots.
 - **Buyer extension hooks.** Five optional Lua functions in `config.lua` plug in clothing systems, HUD hide/show, jail / wanted force-respawn, character-load hand-off, and post-spawn callbacks — without forking the resource.
 - **Public events for cross-resource integration.** Other resources can subscribe to `clads_spawn:client:selectorOpened`, `selectorClosed`, `characterLoaded`, and `spawnComplete` to react to selector state changes.
 
@@ -360,20 +360,7 @@ Replace `web/build/logo.png` with your own 256x256 transparent PNG. The path is 
 
 ### UI palette
 
-The NUI styles live in `web/src/styles.css` and are bundled into `web/build/assets/index.css` at build time. The default `:root` block exposes the Purple Haze palette:
-
-```css
-:root{
-    --primary:#9D4EDD;
-    --primary-light:#B76EF5;
-    --primary-dark:#7B2CBF;
-    --primary-glow:rgba(157,78,221,0.4);
-    --action:#FFEA00;
-    /* ... */
-}
-```
-
-To re-skin: edit `--primary*` and `--action` in `web/src/styles.css`, run `npm run build` from `web/`, commit the new `web/build/`. The card glow, callout strokes, and strip highlights all derive from those variables.
+The selector ships with the **Purple Haze** palette — primary `#9D4EDD` accent on a dark surface with a yellow `#FFEA00` action highlight. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build.
 
 ### Adding spawn points
 
@@ -382,7 +369,7 @@ To re-skin: edit `--primary*` and `--action` in `web/src/styles.css`, run `npm r
 3. Add `spawn_<name>_label` and `spawn_<name>_info` to every `locales/<code>.json` file. Use the same keys across all locales (run `diff` on the parsed key sets before release).
 4. Restart the resource.
 
-The selector picks up the new entry on the next open — no rebuild needed unless you also edited `web/src/`.
+The selector picks up the new entry on the next open after a resource restart.
 
 ---
 
@@ -394,8 +381,8 @@ The selector picks up the new entry on the next open — no rebuild needed unles
 
 **Spawn images don't render.**
 - The `name` field in `Config.Spawns` must match the image filename exactly (case-sensitive on Linux). `bennys` ↔ `bennys.png`, not `Bennys.png`.
-- Confirm the image lives in `web/build/images/`, not `web/src/images/`. The shipped folder is `build/`; `src/` is developer-only.
-- The fallback gradient (named in `THUMB_MAP` inside the bundled JS) renders when an image is missing — if you see a coloured gradient instead of a photo, the image lookup failed.
+- Confirm the image lives in `web/build/images/<name>.png` (the path is escrow-ignored so you can drop files there directly).
+- A fallback gradient renders when an image is missing — if you see a coloured gradient instead of a photo, the image lookup failed.
 
 **The "Last Location" entry never appears.**
 - Confirm `Config.LastLocation.enabled = true`.

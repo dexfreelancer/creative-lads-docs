@@ -11,7 +11,7 @@ A parametric crosshair overlay for FiveM. Crosshairs are drawn live on an HTML5 
 - **Canvas-rendered, not PNG-based.** Every shape (cross, dot, target, diamond, hex, brackets, and more) is drawn at runtime by a small JavaScript renderer that consumes a parameter table — `style`, `color`, `alpha`, `thickness`, `length`, `gap`, `size`, `outline`, `centerDot`, `rotation`. Changing any value redraws the canvas immediately, so there is no scaling, no compression, and no need to ship asset bundles for new looks.
 - **In-game editor with live preview.** Players open a NUI panel via a chat command or a configurable keybind, drag sliders, pick colors, and the overlay updates in real time as they edit. Hitting **Apply** persists the choice, hitting **Save as preset** stores the combination as a named custom preset.
 - **20+ shape styles built in.** `dot`, `cross`, `tshape`, `plus`, `circle`, `target`, `diamond`, `square`, `hexagon`, `triangle`, `bracket`, `parens`, `chevron`, `arrow`, `x`, `equals`, `hash`, `vertical`, `horizontal`, `multidot` — combined with the parametric controls this covers thousands of unique reticles.
-- **Per-player saved presets.** Each player has their own private preset library, persisted via FiveM's resource KVP. Custom presets survive resource restarts, server restarts, and reconnects. A configurable cap (`Config.MaxCustomPresets`) prevents unbounded growth.
+- **Per-player saved presets.** Each player has their own private preset library, saved on the player's client. Custom presets survive resource restarts, server restarts, and reconnects. A configurable cap (`Config.MaxCustomPresets`) prevents unbounded growth.
 - **Framework-agnostic.** Notifications and framework detection go through `community_bridge`, which means the resource runs unchanged on standalone, ESX, QBCore and QBox servers.
 - **Smart visibility logic.** The overlay can be configured to appear only while free-aiming, only while a weapon is equipped, or always on. It can also auto-hide while in vehicles, while the player is dead, and while the pause menu / map is open.
 
@@ -42,7 +42,7 @@ The resource declares both dependencies explicitly in its `fxmanifest.lua` and w
 4. (Optional) Open `config.lua` and tune the values described in section 4.
 5. Start (or restart) the server. Join the game and either type `/crosshair` or press the default keybind (`F7`) to open the editor.
 
-No database tables are required. All persistence is handled per-player through the FiveM resource KVP, so there is nothing to migrate.
+No database tables are required. All persistence is handled per-player on the client, so there is nothing to migrate.
 
 ---
 
@@ -170,7 +170,7 @@ The preset id applied to a player who has never opened the editor. Must match an
 Config.MaxCustomPresets = 20
 ```
 
-Hard cap on how many custom presets a single player can save. Stored in the player's resource KVP, so this guards against unbounded growth on the client side.
+Hard cap on how many custom presets a single player can save on their client.
 
 ### Built-in Presets
 
@@ -369,19 +369,17 @@ These callbacks are registered on the client and used by the NUI panel. They are
 | `close` | — | Closes the editor and releases NUI focus. |
 | `apply` | `{ id }` | Applies a preset by id (built-in or custom) and persists it. |
 | `preview` | `{ preset }` | Live preview while the user drags sliders / picks a color. Does **not** persist. |
-| `save` | `{ preset }` | Validates a preset, enforces `Config.MaxCustomPresets`, and writes it to KVP. |
+| `save` | `{ preset }` | Validates a preset, enforces `Config.MaxCustomPresets`, and saves it on the client. |
 | `delete` | `{ id }` | Deletes a custom preset. Built-ins cannot be deleted. |
 
-### Resource KVP Keys
+### Persistence
 
-Persistence is per-player via FiveM's resource KVP. The two keys used are:
+Saved data is local to each player's client and does not require any server-side database. Two pieces of data are stored:
 
-| Key | Type | Stores |
-|-----|------|--------|
-| `clads_crosshair:active` | string | The active preset id. |
-| `clads_crosshair:custom` | JSON array | The player's custom preset list. |
+- The active preset id.
+- The player's custom preset list.
 
-These are local to each player's client and do not require any server-side database.
+If the player wipes their FiveM data (or moves to another machine) the saved presets reset to the defaults.
 
 ### Lifecycle
 
@@ -411,7 +409,7 @@ Config.HideInVehicle = false
 ### Custom presets not saving
 
 1. The player may have hit the `Config.MaxCustomPresets` cap. The editor surfaces a notification when this happens (`limit_reached` locale key). Raise the cap or have the player delete an old preset.
-2. KVP writes can fail silently if the resource was renamed mid-session. Make sure the folder name on disk matches the name you `ensure` in `server.cfg`. A restart fixes this.
+2. Saved data can fail to write if the resource was renamed mid-session. Make sure the folder name on disk matches the name you `ensure` in `server.cfg`. A restart fixes this.
 3. If a payload is rejected as `invalid_payload`, the preset's `style` was not in the allowed list. This usually means the resource was edited by hand — restore from a fresh copy.
 
 ### Keybind not registering
@@ -422,9 +420,9 @@ Config.HideInVehicle = false
 
 ### Editor opens but is blank
 
-1. The NUI page is in `web/dist/`. If those files are missing or corrupted (for example after an incomplete download), the iframe will load empty. Re-download the resource from your account.
-2. Open the F8 console and check for NUI fetch errors. CFX escrow will load the resource even if some files are missing — confirm the file list with `ls clads_crosshair/web/dist/`.
-3. If your server is behind a strict CSP / asset proxy, make sure the `web/dist/**/*` glob in `fxmanifest.lua` is actually serving the assets. Hitting `https://cfx-nui-clads_crosshair/index.html` from the F8 console should return HTML.
+1. The UI assets did not load — re-download the resource from your Tebex account and replace the folder. The bundle ships pre-built; there is nothing to install on your end.
+2. If your server runs a strict asset proxy or CDN in front of `cfx-nui-*`, make sure it isn't blocking the resource's static files.
+3. If the issue persists after a clean re-download, open a ticket.
 
 ---
 

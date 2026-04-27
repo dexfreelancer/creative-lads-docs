@@ -347,7 +347,7 @@ Both commands are registered through `lib.addCommand` and respect ox_lib's permi
 
 ### UI Theme
 
-Tweak the colors in `Config.UI`. Every value is shipped as part of the NUI `open` payload, which calls `applyTheme` to set CSS variables on `:root`. No rebuild is required — restart the resource and the new theme takes effect on the next open.
+Tweak the colors in `Config.UI`. Restart the resource and the new theme takes effect on the next open.
 
 If you want a lighter theme, raise `bgCore`, `bgSurface`, and `bgElevated` to lighter greys and pick a softer `primary`. Because the success/warning/danger keys drive the "free" pill, motorcycle accent, and error states respectively, keep them visually distinct from `primary`.
 

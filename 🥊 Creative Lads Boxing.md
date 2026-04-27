@@ -401,9 +401,10 @@ via the `canBet` flag passed in the `open` NUI message (`client/main.lua:83`).
 
 ### Asset paths
 
-The web bundle lives in `web/dist/`. The logo at `web/dist/logo.png` is one of
-three files in `escrow_ignore` (`fxmanifest.lua:52-56`), so you can swap it
-for your own logo without touching the encrypted JS.
+The bundled logo is one of the files in `escrow_ignore`
+(`fxmanifest.lua:52-56`), so you can swap it for your own without touching
+anything else. Drop a 256×256 transparent PNG into the same path the
+shipped logo uses and the UI picks it up on the next open.
 
 ---
 

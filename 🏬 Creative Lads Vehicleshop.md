@@ -20,7 +20,7 @@
 - **Framework-agnostic.** All money, persistence, job, and key-grant calls go through `community_bridge`. Vehicle persistence is delegated to one of four adapters loaded at runtime: `qbx_core`, `qb-core`, `es_extended`, or a standalone fallback.
 - **Personal-vehicle hook.** On QB-Core and qbx_core servers, newly purchased vehicles are written to a configurable metadata key. If the player's previous personal vehicle is still on the map, the new one is parked into the default garage instead of being delivered.
 - **Localisation.** Built-in English, German, Spanish, French, and Turkish. Locale auto-detects from `clads_locale`, `ox:locale`, `qb_locale`, or `lang` convars.
-- **Themable UI.** A single `Config.UI` table re-skins the panel by injecting hex colours into CSS variables at runtime — no rebuild required.
+- **Themable UI.** A single `Config.UI` table re-skins the panel — restart the resource and the new theme is live.
 
 ---
 
@@ -171,7 +171,7 @@ Config.UI = {
 }
 ```
 
-The defaults shipped with the resource are the **Dark Red** palette. Every value is a 6-digit hex colour (with leading `#`). The web app injects these into `:root` at runtime, so accents, glows, and gradients all follow without rebuilding the NUI.
+The defaults shipped with the resource are the **Dark Red** palette. Every value is a 6-digit hex colour (with leading `#`). Override any of them and the panel's accents, glows, and gradients follow on the next open.
 
 | Key            | Used for                                                                |
 | -------------- | ----------------------------------------------------------------------- |
@@ -551,7 +551,7 @@ The bulk capture is implemented client-side via `clads_vehicleshop:client:bulkCa
 
 ### UI theme
 
-Edit `Config.UI` in `config.lua`. Every value is a 6-digit hex colour. The web app injects them into `:root` at runtime via `web/src/utils/theme.ts` — no rebuild needed. Drop in a different palette and the entire panel re-skins itself.
+Edit `Config.UI` in `config.lua`. Every value is a 6-digit hex colour. Drop in a different palette, restart the resource, and the entire panel re-skins itself.
 
 ### Adding a new shop
 

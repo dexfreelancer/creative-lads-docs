@@ -517,7 +517,7 @@ Localised strings come from `locales/en.json` under the `success.transfer_sent`,
 
 ### UI Theme
 
-Open `Config.UI` in `config.lua` and override the eleven hex colour values. The change applies on the next garage open — no rebuild of the web assets needed. For deeper visual changes (layout, typography, additional CSS variables), edit `web/src/styles.css` and `web/src/theme.js` and rebuild from the `web/` folder.
+Open `Config.UI` in `config.lua` and override the eleven hex colour values. The change applies on the next garage open — restart the resource and the new theme takes effect.
 
 ### Adding a Garage
 

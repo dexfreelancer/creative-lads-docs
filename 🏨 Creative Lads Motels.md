@@ -17,8 +17,8 @@ A framework-agnostic motel rental and ownership system for FiveM. Players rent r
 - **Owner business** — When `Config.Business = true`, a player can buy an unowned motel for `purchasePrice`, set the rate, hire staff (employees see the rental dashboard too), withdraw revenue, send invoices, transfer ownership, or sell the motel back at half price.
 - **Invoicing** — Owners and employees can send a one-line invoice to any online player. The target sees a popup with cash/bank toggle and a 60-second window to pay; revenue lands in the motel account.
 - **Persistent rent expiry** — A 60-second server loop checks every room's `duration`. Expired tenants are auto-evicted (configurable via `Config.AutoKickOnExpire`) and their room data is cleared.
-- **Crash recovery** — The client persists a small KVP record while inside a shell. On crash/respawn the client re-enters the same shell at the same offset.
-- **Five languages out of the box** — `en`, `tr`, `de`, `fr`, `es`. The locale dictionary is sent to the NUI on every open so the React UI re-renders in the active language without a rebuild.
+- **Crash recovery** — The client remembers the shell it was in. On crash/respawn the player is dropped back into the same shell at the same offset.
+- **Five languages out of the box** — `en`, `tr`, `de`, `fr`, `es`. The active locale is sent to the UI on every open, so language changes take effect without restarting the resource.
 - **Configurable theme** — `Config.UI` ships six ready-to-copy color presets (Purple Haze, Dark Red, Cyber Cyan, Forest Green, Sunset Orange, Mono Slate) with guidance for which suits TP shells vs. MLO motels. Any 6-digit hex value is valid; CSS vars are applied at runtime.
 - **Framework-agnostic** — Every framework / inventory / notify / target / clothing call goes through `community_bridge`. The same install runs on Standalone, ESX, QBCore, and QBox without code changes.
 
@@ -111,7 +111,7 @@ Enables verbose `[clads_motels]` console prints during boot, rent, and shell all
 
 ### UI Theme
 
-The React panels' color scheme is injected into `:root` at runtime — every `SendNUIMessage` carries the active `Config.UI` table, which `applyTheme` writes to CSS variables. **No rebuild needed:** edit hex values, restart the resource, the new theme takes effect on the next open.
+Edit hex values in `Config.UI`, restart the resource, and the new theme takes effect on the next open.
 
 ```lua
 Config.UI = {
@@ -196,7 +196,7 @@ Config.WardrobeBackend = 'auto'
 | `'illenium-appearance'` / `'qb-clothing'` / `'fivem-appearance'` / `'esx_skin'` | Force a specific bridged backend. |
 | `'standalone'` | No clothing resource: the wardrobe target is hidden inside the shell. |
 
-The bridge layer at `bridge/client/wardrobe.lua` also exposes a `BUYER_OVERRIDES` table — drop any non-bridged clothing resource (e.g. `betterv_clothing`) into it without touching the rest of the code.
+The bridge layer at `bridge/client/wardrobe.lua` also exposes a `BUYER_OVERRIDES` table — drop any non-bridged clothing resource (anything outside community_bridge's auto-detected list) into it without touching the rest of the code.
 
 ### Target / Inventory
 
@@ -370,7 +370,7 @@ Server owners can register their own admin tools on top of the server callbacks 
 
 ### Switching theme presets
 
-The fastest way to re-skin the UI is to copy one of the six commented presets in `config.lua` over the active `Config.UI` block and restart the resource. No NUI rebuild required — colors are CSS variables injected at runtime.
+The fastest way to re-skin the UI is to copy one of the six commented presets in `config.lua` over the active `Config.UI` block and restart the resource — the new theme takes effect on the next open.
 
 If you want a custom theme, edit the hex values directly. Each one is documented inline. Keep `success` / `warning` / `danger` distinct from `primary` so the access-mode badges remain readable.
 
@@ -414,11 +414,11 @@ Open `bridge/client/wardrobe.lua` (escrow-ignored — editable post-encryption) 
 
 ```lua
 local BUYER_OVERRIDES = {
-    ['betterv_clothing'] = function()
-        TriggerEvent('betterv_clothing:client:openOutfitMenu')
-    end,
     ['my_clothing'] = function()
         exports.my_clothing:openMenu()
+    end,
+    ['some_other_clothing'] = function()
+        TriggerEvent('some_other_clothing:client:openMenu')
     end,
 }
 ```
