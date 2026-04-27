@@ -9,6 +9,15 @@
 * [🏬 Creative Lads Vehicleshop](<🏬 Creative Lads Vehicleshop.md>)
 * [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>)
 * [🎛️ Creative Lads Handlingeditor](<🎛️ Creative Lads Handlingeditor.md>)
+  * [Overview](<🎛️ Creative Lads Handlingeditor.md#1-overview>)
+  * [Requirements](<🎛️ Creative Lads Handlingeditor.md#2-requirements>)
+  * [Installation](<🎛️ Creative Lads Handlingeditor.md#3-installation>)
+  * [Configuration](<🎛️ Creative Lads Handlingeditor.md#4-configuration>)
+  * [Commands](<🎛️ Creative Lads Handlingeditor.md#5-commands>)
+  * [Customization](<🎛️ Creative Lads Handlingeditor.md#6-customization>)
+  * [Exports & Events](<🎛️ Creative Lads Handlingeditor.md#7-exports-and-events>)
+  * [Troubleshooting](<🎛️ Creative Lads Handlingeditor.md#8-troubleshooting>)
+  * [Support](<🎛️ Creative Lads Handlingeditor.md#9-support>)
 
 ## Player
 
