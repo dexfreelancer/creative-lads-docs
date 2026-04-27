@@ -8,6 +8,7 @@
 * [🅿️ Creative Lads Garages](<🅿️ Creative Lads Garages.md>)
 * [🏬 Creative Lads Vehicleshop](<🏬 Creative Lads Vehicleshop.md>)
 * [🚙 Creative Lads Rentals](<🚙 Creative Lads Rentals.md>)
+* [🎛️ Creative Lads Handlingeditor](<🎛️ Creative Lads Handlingeditor.md>)
 
 ## Player
 
