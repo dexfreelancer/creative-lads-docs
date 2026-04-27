@@ -360,7 +360,41 @@ Replace `web/build/logo.png` with your own 256x256 transparent PNG. The path is 
 
 ### UI palette
 
-The selector ships with the **Purple Haze** palette — primary `#9D4EDD` accent on a dark surface with a yellow `#FFEA00` action highlight. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build.
+`Config.UI` exposes the full colour scheme. Edit any value in `config.lua`, restart the resource, and the new theme applies on the next selector open. The defaults below are the shipping **Purple Haze** palette.
+
+```lua
+Config.UI = {
+    primary       = '#9D4EDD',
+    primaryLight  = '#B76EF5',
+    primaryDark   = '#7B2CBF',
+    primaryGlow   = 'rgba(157,78,221,0.4)',
+    primarySubtle = 'rgba(157,78,221,0.12)',
+
+    action        = '#FFEA00',
+    actionGlow    = 'rgba(255,234,0,0.5)',
+
+    panel         = 'rgba(31,27,41,0.85)',
+    panelHeavy    = 'rgba(19,14,29,0.92)',
+    surface       = '#1F1B29',
+    elevated      = 'rgba(42,38,53,0.575)',
+
+    statusBlue    = '#00E5FF',
+    statusRed     = '#FF2A6D',
+    statusOrange  = '#FF9100',
+    statusGreen   = '#00E676',
+}
+```
+
+| Key | Used for |
+|---|---|
+| `primary` / `primaryLight` / `primaryDark` | Card border, hero glow, selected location accent |
+| `primaryGlow` / `primarySubtle` | Drop-shadow tint and tinted surface fills |
+| `action` / `actionGlow` | "Spawn" CTA highlight and pulse |
+| `panel` / `panelHeavy` | Card and dropdown backgrounds |
+| `surface` / `elevated` | HUD card and elevated surfaces |
+| `statusBlue` / `statusRed` / `statusOrange` / `statusGreen` | Population tier dots, callouts, status indicators |
+
+Two ready-to-paste alternates are commented at the top of `Config.UI` — **Dark Red** and **Cyber Cyan**. Copy either block over the active one and restart.
 
 ### Adding spawn points
 

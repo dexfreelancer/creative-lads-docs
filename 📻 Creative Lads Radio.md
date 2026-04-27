@@ -356,7 +356,40 @@ Suggested `ox_inventory` entry:
 
 ### 7.1 UI Theme
 
-The radio ships with the **dark_red** palette — primary accent `#FF003C` on a black/dark-grey LCD surface. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build.
+`Config.UI` exposes the full colour scheme. Edit any value in `shared/config.lua`, restart the resource, and the new palette applies the next time the radio opens. The defaults below are the shipping **Dark Red** palette.
+
+```lua
+Config.UI = {
+    primary       = '#FF003C',
+    primaryGlow   = 'rgba(255, 0, 60, 0.4)',
+    primaryDim    = 'rgba(255, 0, 60, 0.06)',
+
+    amber         = '#F59E0B',
+    amberGlow     = 'rgba(245, 158, 11, 0.35)',
+    amberDim      = 'rgba(245, 158, 11, 0.06)',
+
+    danger        = '#FF003C',
+    dangerGlow    = 'rgba(255, 0, 60, 0.4)',
+
+    secondary     = '#888888',
+    secondaryGlow = 'rgba(136, 136, 136, 0.3)',
+
+    bgCore        = '#0D0D0D',
+    bgSurface     = '#1A1A1A',
+    bgPanel       = 'rgba(13, 13, 13, 0.92)',
+    bgInset       = 'rgba(0, 0, 0, 0.4)',
+}
+```
+
+| Key group | Used for |
+|---|---|
+| `primary*` | Frequency digits, channel labels, active text — the core LCD accent |
+| `amber*` | Battery, secondary cues, warning badges |
+| `danger*` | Disconnect / alarm / talking indicators |
+| `secondary*` | Placeholders, muted labels |
+| `bg*` | Panel chrome, inset insets, glass surfaces |
+
+A green legacy-LCD example is commented at the top of `Config.UI` — copy it over the active block to flip the entire panel to a vintage-radio look.
 
 ### 7.2 Adding restricted channels
 

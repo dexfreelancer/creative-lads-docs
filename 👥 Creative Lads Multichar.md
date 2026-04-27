@@ -370,9 +370,41 @@ There are no other in-game commands shipped by this resource.
 
 ## 6. Customization
 
-### UI theme (Dark Red palette)
+### UI theme
 
-The character selector ships with the **Dark Red** palette — primary `#FF003C` on a black/dark-grey surface. The colour scheme is fixed for this version. If you need a custom palette to match your server's brand, open a ticket and we can ship a recoloured build. Future releases will move this resource onto the same runtime-theme override used by the newer `clads_*` resources.
+The same `Config.UI` table that holds `LogoSrc` and the font config also exposes the full colour palette. Edit any value in `config.lua`, restart the resource, and the new theme is live on the next selector open. The defaults below are the shipping **Dark Red** palette.
+
+```lua
+Config.UI = {
+    -- (existing LogoSrc / FontUrl / FontPrimary / FontDisplay above)
+
+    primary       = '#FF003C',
+    primaryHover  = '#FF3D63',
+    primaryDim    = 'rgba(255, 0, 60, 0.3)',
+    primaryGlow   = 'rgba(255, 0, 60, 0.5)',
+
+    action        = '#FF003C',
+    actionHover   = '#CC0030',
+    actionDim     = 'rgba(255, 0, 60, 0.2)',
+
+    bgCore        = '#0D0D0D',
+    bgSurface     = '#1A1A1A',
+    bgElevated    = '#2E2E2E',
+    bgGlass       = 'rgba(26, 26, 26, 0.85)',
+    bgGlassHover  = 'rgba(26, 26, 26, 0.95)',
+
+    success       = '#22C55E',
+    danger        = '#FF003C',
+    warning       = '#F59E0B',
+}
+```
+
+| Key group | Used for |
+|---|---|
+| `primary*` | Active states, glow, selected slot accent, slider thumb |
+| `action*` | Confirm / spawn CTA |
+| `bg*` | Tablet background, slot cards, glassmorphic panels |
+| `success` / `danger` / `warning` | Inline status indicators |
 
 ### Changing the logo
 

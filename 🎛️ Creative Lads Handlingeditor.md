@@ -234,6 +234,36 @@ Config.MeddlingResources = {
 
 A handful of community resources re-write `CHandlingData` after this editor sets it. On startup the server prints a one-shot warning for every name that's currently `started` or `starting`, so you know where to look if values keep flipping back during testing. Add or remove names to match your stack — anti-cheats and any custom speed-limiter scripts are common offenders.
 
+### UI Theme
+
+```lua
+Config.UI = {
+    primary      = '#FF003C',
+    primarySoft  = 'rgba(255, 0, 60, 0.22)',
+
+    danger       = '#ef4444',
+    success      = '#22C55E',
+
+    bgGlass      = 'rgba(15, 17, 20, 0.92)',
+
+    textMain     = '#e6e9ef',
+    textSoft     = '#94a3b8',
+    border       = 'rgba(148, 163, 184, 0.22)',
+}
+```
+
+Tokens are pushed to the editor on every open and applied to CSS variables on `:root`. Restart the resource and the new palette is live.
+
+| Key | Used for |
+|---|---|
+| `primary` | Active tab, sidebar selected category, sliders, profile load button |
+| `primarySoft` | Tinted background for the active tab and selected category |
+| `danger` | Cancel / error states |
+| `success` | Changed-field card border, "faster" baseline delta in telemetry |
+| `bgGlass` | Tab panel surface |
+| `textMain` / `textSoft` | Primary and secondary text |
+| `border` | Dividers, card outlines |
+
 ---
 
 ## 5. Commands
