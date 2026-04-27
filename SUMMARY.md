@@ -31,3 +31,7 @@
 
 * [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>)
 * [🔨 Creative Lads Crafting](<🔨 Creative Lads Crafting.md>)
+
+## Economy
+
+* [💳 Creative Lads Banking](<💳 Creative Lads Banking.md>)

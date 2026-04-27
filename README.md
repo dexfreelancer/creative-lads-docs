@@ -21,6 +21,7 @@ Welcome to the official documentation for the Creative Lads FiveM resource suite
 | [📛 Creative Lads Nameplate](<📛 Creative Lads Nameplate.md>) | DUI nameplates with title, level, wanted stars, badge, and four cosmetic overlays + cosmetic menu |
 | [🥊 Creative Lads Boxing](<🥊 Creative Lads Boxing.md>) | 1v1 boxing arena with rounds, gloves, HUD timer, and parimutuel betting |
 | [🔨 Creative Lads Crafting](<🔨 Creative Lads Crafting.md>) | Full-screen crafting with placeable benches, recipe queue, profession XP, and 3D preview |
+| [💳 Creative Lads Banking](<💳 Creative Lads Banking.md>) | Bank UI, ATMs, society accounts, IBAN transfers, PIN, fees, and Renewed-Banking-compatible exports |
 
 ## Common Stack
 
